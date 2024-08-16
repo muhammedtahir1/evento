@@ -3,8 +3,8 @@
 import Link from "next/link";
 import Logo from "./logo";
 import { usePathname } from "next/navigation";
-import clsx from "clsx";
 import {motion} from "framer-motion";
+import { cn } from "@/lib/utils";
 
 const routes = [
   {
@@ -31,7 +31,7 @@ const Header = () => {
               <Link
                 key={route.path}
                 href={route.path}
-                className={clsx("hover:text-white/90 transition  ", {
+                className={cn("hover:text-white/90 transition  ", {
                   "text-white": activePathName === route.path,
                   "text-white/50": activePathName !== route.path,
                 })}
