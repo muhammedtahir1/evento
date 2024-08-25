@@ -12,7 +12,7 @@ const routes = [
     path: "/"
   },
   {
-    name: "Events",
+    name: "All Events",
     path: "/events/all"
   }
 ]

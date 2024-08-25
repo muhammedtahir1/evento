@@ -1,23 +1,33 @@
 import Image from "next/image";
 import H1 from "@/components/h1";
-import { sleep } from "@/lib/utils";
+import { title } from "process";
+import { Metadata } from "next";
+import { getEvent } from "@/lib/utils";
 
-type EventPageProps = {
+type Props = {
   params: {
     slug: string;
   };
 };
 
-export default async function EventPage({ params }: EventPageProps) {
+
+export async function generateMetadata({params}: Props): Promise<Metadata>{
+  const slug = params.slug;
+
+  // utils / getEvent function - to fetch data
+  const event = await getEvent(slug);
+
+  return {
+    title: event.name,
+  };
+}
+
+
+export default async function EventPage({ params }: Props) {
   const slug = params.slug;
   // console.log(slug); we are getting the segment path in slug
 
-  await sleep(2000);
-
-  const response = await fetch(
-    `https://bytegrad.com/course-assets/projects/evento/api/events/${slug}`
-  );
-  const event = await response.json();
+  const event = await getEvent(slug);
 
   return (
     <main>
