@@ -2,7 +2,7 @@ import Image from "next/image";
 import H1 from "@/components/h1";
 import { title } from "process";
 import { Metadata } from "next";
-import { getEvent } from "@/lib/utils";
+import { getEvent } from "@/lib/server-utils";
 import { notFound } from "next/navigation";
 
 type Props = {
